@@ -2,12 +2,15 @@ package com.kohlicontroller;
 import java.util.List;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
+import com.kohlientity.TimelineDetails;
 import com.kohlientity.kohliUser;
 import com.kohliservice.kohliServiceInterface;
 import com.kohliutility.ServiceFactory;
 
 public class kohlicontroller implements kohliControllerInterface {
+	Logger log = Logger.getLogger("kohlicontroller"); 
 	kohliServiceInterface ks = null;
 	
 	public kohlicontroller() {
@@ -17,16 +20,16 @@ public class kohlicontroller implements kohliControllerInterface {
 	public void createProfileController() {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter Name: ");
+		log.info("Enter Name: ");
 		String name = sc.next();
 		
-		System.out.println("Enter Password: ");
+		log.info("Enter Password: ");
 		String password = sc.next();
 		
-		System.out.println("Enter Email: ");
+		log.info("Enter Email: ");
 		String email = sc.next();
 		
-		System.out.println("Enter Address: ");
+		log.info("Enter Address: ");
 		String address = sc.next();
 		
 		kohliUser ku = new kohliUser();
@@ -228,7 +231,44 @@ public class kohlicontroller implements kohliControllerInterface {
 		return i;
 		
 	}
+	public void createTimeline() {
+
+		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("Enter Message ID: ");
+		String messageid = sc.next();
+		
+		System.out.println("Enter Sender ID: ");
+		String sender = sc.next();
+		
+		System.out.println("Enter Reciever ID: ");
+		String reciever = sc.next();
+		
+		System.out.println("Enter Message: ");
+		String message = sc.next();
+		
+		System.out.println("Enter Date: ");
+		String date = sc.next();
+		
+		TimelineDetails tld = new TimelineDetails();
+		tld.setMessageid(messageid);
+		tld.setSender(sender);
+		tld.setReciever(reciever);
+		tld.setMessage(message);
+		tld.setDate(date);
+		
+		int i = ks.createTimelineService(tld);
+		
+		if(i>0){
+			System.out.println("Your timeline is updated");
+		}
+		
+		else {
+			System.out.println("Sorry, unable to create timeline");
+		}
+		
+	}
+
 }
 
 

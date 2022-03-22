@@ -2,6 +2,7 @@ package com.kohlidao;
 
 import java.util.List;
 
+import com.kohlientity.TimelineDetails;
 import com.kohlientity.kohliUser;
 
 public interface kohliDAOInterface {
@@ -19,5 +20,7 @@ public interface kohliDAOInterface {
 	int editProfileDAO(kohliUser vu);
 
 	kohliUser signINDAO(kohliUser ku);
+
+	int createTimelineDAO(TimelineDetails tld);
 
 }

@@ -3,6 +3,7 @@ package com.kohliservice;
 import java.util.List;
 
 import com.kohlidao.kohliDAOInterface;
+import com.kohlientity.TimelineDetails;
 import com.kohlientity.kohliUser;
 import com.kohliutility.DAOFactory;
 
@@ -55,6 +56,12 @@ public class kohliService implements kohliServiceInterface {
 	public kohliUser signINService(kohliUser ku) {
 		kohliUser i = kd.signINDAO(ku);
 		return i;
+	}
+	public int createTimelineService(TimelineDetails tld) {
+
+		int i = kd.createTimelineDAO(tld);
+		return i;
+		
 	}
 
 }

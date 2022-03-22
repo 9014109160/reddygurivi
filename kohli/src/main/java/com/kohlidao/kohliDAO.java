@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.DriverManager;
 
+import com.kohlientity.TimelineDetails;
 import com.kohlientity.kohliUser;
 
 public class kohliDAO implements kohliDAOInterface {
@@ -106,13 +107,14 @@ public class kohliDAO implements kohliDAOInterface {
 	}
 
 	@Override
-	public List<kohliUser> viewAllProfilesDAO() {
+	public List<kohliUser> viewAllProfilesDAO() 
+	{
 		kohliUser v = null;
 		List<kohliUser> ll = new ArrayList<kohliUser>();
 		
 		try {
 			
-			PreparedStatement ps = con.prepareStatement("select * from VishnuUser");
+			PreparedStatement ps = con.prepareStatement("select * from kohliUser");
 			
 			ResultSet res = ps.executeQuery();
 			
@@ -238,6 +240,33 @@ public class kohliDAO implements kohliDAOInterface {
 		
 		return v;
 	}
-}
+
+	@Override
+	public int createTimelineDAO(TimelineDetails tld) {
+int i = 0;
+		
+		try {
+			
+			PreparedStatement ps = con.prepareStatement("insert into TimelineDetails values(?,?,?,?,?)");
+			ps.setString(1, tld.getMessageid());
+			ps.setString(2, tld.getSender());
+			ps.setString(3, tld.getMessage());
+			ps.setString(4, tld.getDate());
+			ps.setString(5, tld.getReciever());
+			
+			i = ps.executeUpdate();
+			
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return i;
+		
+	}
+
+	}
+
 
 

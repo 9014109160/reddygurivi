@@ -18,4 +18,6 @@ public interface kohliControllerInterface {
 
 	kohliUser signINController();
 
+	void createTimeline();
+
 }

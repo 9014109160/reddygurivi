@@ -42,11 +42,12 @@ public class Kohliview {
 							System.out.println("Press 3 to ViewAll Profile");
 							System.out.println("Press 4 to Search Profile");
 							System.out.println("Press 5 to  EditProfile");
+							System.out.println("Press 6 to Create Timeline");
 							
-							sc.close();
+							//sc.close();
 							System.out.println("Select an option");
-							Scanner scan12 = new Scanner(System.in);
-							int cc = scan12.nextInt();
+							//Scanner scan12 = new Scanner(System.in);
+							int cc = sc.nextInt();
 							
 							switch(cc) {
 								case 1:
@@ -64,11 +65,14 @@ public class Kohliview {
 								case 5:
 									kc.editProfileController();
 									break;
+								case 6:
+									kc.createTimeline();
+									break;
 								default:
 									System.out.println("wrong choice");
 							}
 							System.out.println("press y to continue");
-							s = scan12.next();
+							s = sc.next();
 						}
 					}
 					
